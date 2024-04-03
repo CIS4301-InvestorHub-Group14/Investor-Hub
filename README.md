@@ -7,7 +7,7 @@
 # To Run
 `python manage.py runserver`
 
-Make sure you change the DATABASE 'USER' and 'PASSWORD' to your own respective Oracle DB credentials so there aren't any conflicts. You can find the DATABASE section in settings.py
+Make sure you change the DATABASE 'USER' and 'PASSWORD' to your own respective Oracle DB credentials so there aren't any conflicts. You can find the DATABASE section in settings.py. If the console prompts you to migrate, do it.
 
 # Admin Page
 
