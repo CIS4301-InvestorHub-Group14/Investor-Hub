@@ -9,6 +9,10 @@
 
 Make sure you change the DATABASE 'USER' and 'PASSWORD' to your own respective Oracle DB credentials so there aren't any conflicts. You can find the DATABASE section in settings.py
 
+# Admin Page
+
+To create a superuser: `python manage.py createsuperuser` and follow instructions
+
 # Anaconda
 
 If you want to use Anaconda to setup your virtual environment/interpreter. You can do this by installing it here[https://www.anaconda.com/] by setting up the following commands:
