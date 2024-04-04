@@ -19,4 +19,4 @@ If you want to use Anaconda to setup your virtual environment/interpreter. You c
 `conda create --name myenv python=3.12`
 Activate the virtual environment with `conda activate myenv`
 
-If you are using PyCharm, you can create 
+If you are using PyCharm, you can create a Django project where you can select your own python interpreter.
