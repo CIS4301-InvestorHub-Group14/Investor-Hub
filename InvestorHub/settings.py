@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'SearchApp',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'orcl',
-        'USER': 'bgrunes',
-        'PASSWORD': '1Bj761gxo16AtLeQFVFHY4Lt',
+        'USER': 'schreckryan',
+        'PASSWORD': 'KRZ4L6Q3pfjssIDJIbzmxQDz',
         'HOST': 'oracle.cise.ufl.edu',
         'PORT': '1521',
     }
@@ -121,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

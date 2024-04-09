@@ -1,0 +1,29 @@
+/* global.css */
+
+/* Enhanced navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px; /* Rounded edges for modern look */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 15px;
+    transition: color 0.3s; /* Smooth transition for hover effects */
+}
+
+.navbar-right {
+    display: flex;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+    color: #bbb; /* Lighten color on hover for a subtle effect */
+}
