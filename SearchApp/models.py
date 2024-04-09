@@ -11,20 +11,20 @@ from django.db import models
 
 class Stock(models.Model):
     stock_id = models.BigIntegerField(primary_key=True)
-    time = models.CharField(max_length=255, blank=True, null=True)
-    open = models.FloatField(blank=True, null=True)
-    close = models.FloatField(blank=True, null=True)
-    high = models.FloatField(blank=True, null=True)
-    low = models.FloatField(blank=True, null=True)
-    volume = models.BigIntegerField(blank=True, null=True)
-    date = models.DateField()
+    record_time = models.CharField(db_column="RecordTime", max_length=255, blank=True, null=True)
+    record_open = models.FloatField(db_column="RecordOpen", blank=True, null=True)
+    record_close = models.FloatField(db_column="RecordClose", blank=True, null=True)
+    record_high = models.FloatField(db_column="RecordHigh", blank=True, null=True)
+    record_low = models.FloatField(db_column="RecordLow", blank=True, null=True)
+    record_volume = models.BigIntegerField(db_column="RecordVolume", blank=True, null=True)
+    record_date = models.DateField(db_column="RecordDate")
     timeframe = models.CharField(max_length=3)
     ticker = models.CharField(max_length=4, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
+    information = models.TextField(blank=True, null=True)
     saveid = models.ForeignKey('Saveddata', models.PROTECT, db_column='saveid', blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'stock'
 
 
@@ -37,31 +37,31 @@ class SiteUser(models.Model):
     firstname = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'site_user'
 
 
 class Dividends(models.Model):
     dividend_id = models.BigIntegerField(primary_key=True)
-    date = models.DateField(blank=True, null=True)
+    record_date = models.DateField(db_column="RecordDate", blank=True, null=True)
     dividend = models.FloatField(blank=True, null=True)
     stock = models.ForeignKey('Stock', models.PROTECT, blank=True, null=True)
 
     class Meta:
-        managed = True
-        db_table = 'dividends'
+        managed = False
+        db_table = 'DIVIDENDS'
 
 
 class Institutionalholders(models.Model):
     institutional_id = models.BigIntegerField(primary_key=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
+    holder = models.CharField(db_column="Holder", max_length=255, blank=True, null=True)
     shares = models.BigIntegerField(blank=True, null=True)
-    datereported = models.DateField(blank=True, null=True)
-    percentout = models.FloatField(blank=True, null=True)
+    date_reported = models.DateField(blank=True, null=True)
+    percent_out = models.FloatField(db_column="PercentOut", blank=True, null=True)
     stock = models.ForeignKey('Stock', models.PROTECT, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'institutionalholders'
 
 
@@ -69,22 +69,22 @@ class Majorholders(models.Model):
     major_id = models.BigIntegerField(primary_key=True)
     holder = models.CharField(max_length=255, blank=True, null=True)
     shares = models.BigIntegerField(blank=True, null=True)
-    datereported = models.DateField(blank=True, null=True)
-    percentout = models.FloatField(blank=True, null=True)
+    date_reported = models.DateField(db_column="DateReported", blank=True, null=True)
+    percent_out = models.FloatField(db_column="PercentOut", blank=True, null=True)
     stock = models.ForeignKey('Stock', models.PROTECT, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'majorholders'
 
 
 class Saveddata(models.Model):
     saveid = models.BigIntegerField(primary_key=True)
-    graph = models.BinaryField()
+    diagram = models.BinaryField()
     timeframe = models.CharField(max_length=3)
     metric_type = models.CharField(max_length=255, blank=True, null=True)
     username = models.ForeignKey('SiteUser', models.PROTECT, db_column='username', blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'saveddata'
