@@ -14,3 +14,6 @@ def index_view(request):
 
 def home_view(request):
     return render(request, 'dashboard.html')
+
+def settings_view(request):
+    return render(request, 'settings.html')

@@ -11,8 +11,8 @@
     {% include "navbar.html" %}
 
     <!-- Main content for the Login page -->
-    <main class="LoginText">
-        <h1 class="welcomeTitle">Login Page</h1>
+    <div class="container">
+        <h1>Login Page</h1>
         <form action="/perform_login" method="post">
             {% csrf_token %}
             <div>
@@ -24,9 +24,10 @@
                 <input type="password" id="password" name="password">
             </div>
             <div>
-                <button type="submit">Login</button>
+                <input type="submit" value="Login">
+                <button type="button" class="back-button" onclick="window.history.back();">Back</button>
             </div>
         </form>
-    </main>
+    </div>
 </body>
 </html>
