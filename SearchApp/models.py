@@ -9,6 +9,7 @@ from django.db import models
 
 # These models are all the table schemas we created in SQLDeveloper
 
+
 class Stock(models.Model):
     stock_id = models.BigIntegerField(primary_key=True)
     record_time = models.CharField(db_column="RecordTime", max_length=255, blank=True, null=True)
@@ -49,7 +50,7 @@ class Dividends(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'DIVIDENDS'
+        db_table = 'dividends'
 
 
 class Institutionalholders(models.Model):
