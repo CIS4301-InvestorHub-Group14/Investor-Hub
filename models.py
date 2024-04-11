@@ -6,8 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
-# These models are all the table schemas we created in SQLDeveloper
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
 class Stock(models.Model):
@@ -65,7 +64,6 @@ class Majorholders(models.Model):
         managed = False
         db_table = 'majorholders'
 
-
 class Saveddata(models.Model):
     saveid = models.BigIntegerField(primary_key=True)
     diagram = models.BinaryField()
@@ -77,6 +75,21 @@ class Saveddata(models.Model):
         db_table = 'saveddata'
 
 
+class SiteUserManager(BaseUserManager):
+    def create_user(self, username, email, password=None, **extra_fields):
+        if not username:
+            raise ValueError("The given username must be set")
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self.db)
+        return user
+
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        return self.create_user(username, email, password, **extra_fields)
+
 class SiteUser(models.Model):
     username = models.CharField(primary_key=True, max_length=255)
     password = models.CharField(max_length=255, blank=True, null=True)
@@ -85,5 +98,12 @@ class SiteUser(models.Model):
     lastname = models.CharField(max_length=255, blank=True, null=True)
     firstname = models.CharField(max_length=255, blank=True, null=True)
 
+    objects = SiteUserManager()
+
+    USERNAME_FIELDS = 'username'
+    REQUIRED_FIELDS = ['email']
     class Meta:
         db_table = 'site_user'
+
+    def __str__(self):
+        return self.username
