@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from .forms import SignUpForm
-from .models import SiteUser
+from .models import SiteUser, Stock
 
 
 # Create your views here.
@@ -55,6 +55,11 @@ def register_view(request):
 # Index will be our welcome page
 def index_view(request):
     return render(request, 'index.html')
+
+
+def stock_view(request, ticker):
+    stock = get_object_or_404(Stock, symbol=ticker)
+    return render(request, 'stock.html', {'stock': stock})
 
 
 def home_view(request):

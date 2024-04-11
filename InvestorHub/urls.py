@@ -28,4 +28,5 @@ urlpatterns = [
     path('settings/', views.settings_view, name='settings'),
     path('logout/', LogoutView.as_view(next_page=reverse_lazy('login')), name='logout'),
     path('dashboard/', views.home_view, name='home'),
+    path('stock/<str:symbol>/', views.stock_view, name='stock'),
 ]
