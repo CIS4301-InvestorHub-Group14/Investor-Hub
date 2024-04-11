@@ -46,8 +46,7 @@ def register_view(request):
                 password=form.cleaned_data['password'],
                 email=form.cleaned_data['email']
             )
-            # redirect to login page
-            return redirect('login')
+            # redirect to login page in html
     else:
         # The request is GET, so display blank form
         form = SignUpForm()
