@@ -27,4 +27,5 @@ urlpatterns = [
     path('settings/', views.settings_view, name='settings'),
     path('dashboard/', views.dashboard_view, name='dashboard'),
     path('savedcomparisons/', views.savedcomparisons_view, name='savedcomparisons'),
+    path('metrics/', views.metrics_view, name='metrics'),
 ]

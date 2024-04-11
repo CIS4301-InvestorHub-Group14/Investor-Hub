@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestorHub Metrics</title>
+    <link rel="stylesheet" href="{% static 'global.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <main class="main-metrics">
+        <div class="centered-text">
+            <h1 class="welcomeTitle">InvestorHub lets you track the stock market</h1>
+            <p class="welcomeSubtitle">Here are the applicable metrics!</p>
+        </div>
+
+        <div class="time-range-selector">
+            <label for="time-range">Time Range</label>
+            <select id="time-range" name="time-range">
+                <option value="1m">1 Month</option>
+                <option value="3m">3 Months</option>
+                <option value="6m">6 Months</option>
+                <option value="1y">1 Year</option>
+                <!-- ... Other time ranges ... -->
+            </select>
+        </div>
+
+        <!-- Metrics Section -->
+        <div class="metrics-section">
+            <div class="metric">
+                <h2>Moving Average Convergence Divergence (MACD)</h2>
+                <p>A trend-following momentum indicator that shows the relationship between two exponential moving averages (EMAs) of a security's price.</p>
+            </div>
+            <div class="metric">
+                <h2>Volatility</h2>
+                <p>A measure of dispersion around the mean return of a security.</p>
+            </div>
+            <div class="metric">
+                <h2>Relative Strength Index (RSI)</h2>
+                <p>A technical momentum indicator that compares recent price gains against recent price losses indicating whether or not an asset is overbought or oversold.</p>
+            </div>
+            <div class="metric">
+                <h2>Monthly Moving Average (MMA)</h2>
+                <p>A technical indicator that averages a stock's price over a specified period of one month, smoothing out short-term fluctuations and highlighting longer-term trends in price movement.</p>
+            </div>
+            <div class="metric">
+                <h2>Positive and Negative Volume Index</h2>
+                <p>
+                    The Positive Volume Index (PVI) tracks upward price movement on days of increased volume, while the Negative Volume Index (NVI) tracks price movement on days of decreased volume, both aiming to identify trends based on trading volume changes.</p>
+            </div>
+            
+        </div>
+    </main>
+</body>
+</html>

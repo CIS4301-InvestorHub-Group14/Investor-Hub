@@ -74,3 +74,6 @@ def dashboard_view(request):
 
 def savedcomparisons_view(request):
     return render(request, 'savedcomparisons.html')
+
+def metrics_view(request):
+    return render(request, 'metrics.html')
