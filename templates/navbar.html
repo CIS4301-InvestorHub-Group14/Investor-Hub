@@ -7,5 +7,12 @@
         <a href="/home">Home</a>
         <a href="/settings">Settings</a>
         <a href="/dashboard">Dashboard</a>
+        {% if user.is_authenticated %}
+            <span>Hi, {{  user.username }}!</span>
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <input type="submit" value="Logout">
+            </form>
+        {% endif %}
     </div>
 </nav>

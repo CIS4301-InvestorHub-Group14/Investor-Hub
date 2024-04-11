@@ -17,9 +17,6 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return redirect('home')  # redirect to user's home page
-        else:
-            # Invalid login
-            pass
 
     return render(request, 'login.html')
 
@@ -47,6 +44,7 @@ def register_view(request):
                 email=form.cleaned_data['email']
             )
             # redirect to login page in html
+            return redirect('login')
     else:
         # The request is GET, so display blank form
         form = SignUpForm()
@@ -60,7 +58,15 @@ def index_view(request):
 
 
 def home_view(request):
-    return render(request, 'dashboard.html')
+    user = request.user
+
+    username = user.username
+
+    context = {
+        'username': username
+    }
+
+    return render(request, 'dashboard.html', context)
 
 
 def settings_view(request):

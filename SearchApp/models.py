@@ -44,7 +44,7 @@ class Institutionalholders(models.Model):
     institutional_id = models.BigIntegerField(primary_key=True)
     holder = models.CharField(max_length=255, blank=True, null=True)
     shares = models.BigIntegerField(blank=True, null=True)
-    date_reported = models.DateField(blank=True, null=True)
+    datereported = models.DateField(blank=True, null=True)
     percentout = models.FloatField(blank=True, null=True)
     stock = models.ForeignKey('Stock', models.DO_NOTHING, blank=True, null=True)
 
