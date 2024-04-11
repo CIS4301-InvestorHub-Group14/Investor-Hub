@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestorHub Dashboard</title>
+    <link rel="stylesheet" href="{% static 'global.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <!-- Main content for the dashboard page -->
+    <main class="main-dashboard">
+        <div class="centered-text">
+            <h1 class="welcomeTitle">InvestorHub lets you track the stock market</h1>
+            <p class="welcomeSubtitle">Welcome to InvestorHub</p>
+        </div>
+
+        <!-- Non-functional Search bar for stock queries -->
+        <div class="search-bar">
+            <form>
+                <input type="text" placeholder="Search stocks..." aria-label="Search stocks">
+                <button type="button">Search</button> <!-- Button does nothing on click -->
+            </form>
+        </div>
+    </main>
+</body>
+</html>

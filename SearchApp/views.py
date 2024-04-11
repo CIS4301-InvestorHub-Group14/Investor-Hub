@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from .forms import SignUpForm
 from .models import SiteUser
 
@@ -19,6 +20,7 @@ def login_view(request):
             return redirect('home')  # redirect to user's home page
         else:
             # Invalid login
+            messages.error(request, "Invalid username or password. Please try again.")
             pass
 
     return render(request, 'login.html')
@@ -66,3 +68,6 @@ def home_view(request):
 
 def settings_view(request):
     return render(request, 'settings.html')
+
+def dashboard_view(request):
+    return render(request, 'dashboard.html')
