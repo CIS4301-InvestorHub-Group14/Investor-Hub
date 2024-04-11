@@ -3,8 +3,49 @@
 /* Body and background styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     padding: 20px;
+    margin: 0;
+    position: relative;
+    overflow-x: hidden; 
+    background-color: #f9fafb;
+    min-height: 100vh;
+}
+
+body::before, body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: 500px; 
+    height: 500px; 
+    filter: blur(160px);
+    z-index: -1;
+}
+
+body::before {
+    top: -150px; 
+    right: 100px; 
+    background-color: #fbe2e3; 
+    filter: blur(100px);
+}
+
+body::after {
+    bottom: -150px; 
+    left: 100px; 
+    background-color: #dbd7fb; 
+    filter: blur(100px);
+}
+
+/* Dark mode specifics, if needed */
+body.dark {
+    background-color: #1f2937;
+}
+
+body.dark::before {
+    background-color: #946263; 
+}
+
+body.dark::after {
+    background-color: #676394; 
 }
 
 /* Container for centralized styling */
@@ -15,7 +56,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 0 auto;
-    text-align: center; /* Centers text within the container */
+    text-align: center; 
 }
 
 .centered-text {
@@ -51,7 +92,7 @@ input[type="email"] {
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus {
-    border-color: #00ffea; /* Highlight focus with a modern color */
+    border-color: #00ffea;
 }
 
 /* Styles for submit and general action buttons */
@@ -89,8 +130,8 @@ button.back-button:hover {
     padding: 10px;
     background-color: #333;
     color: #fff;
-    border-radius: 8px; /* Rounded edges for modern look */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
 }
 
 /* Link styles within navbar */
@@ -98,7 +139,7 @@ button.back-button:hover {
     color: #fff;
     text-decoration: none;
     padding: 0 15px;
-    transition: color 0.3s; /* Smooth transition for hover effects */
+    transition: color 0.3s; 
 }
 
 /* Flex display for right-aligned navbar elements */
@@ -109,14 +150,14 @@ button.back-button:hover {
 /* Hover effect for links within navbar */
 .navbar a:hover {
     text-decoration: none;
-    color: #bbb; /* Lighten color on hover for a subtle effect */
+    color: #bbb; 
 }
 
 /*style for regex messages*/
 .messages p {
-    color: red; /* Default color for error messages */
-    border: 1px solid #ffa1a1; /* Light red border */
-    background-color: #ffecec; /* Very light red background */
+    color: red; 
+    border: 1px solid #ffa1a1; 
+    background-color: #ffecec; 
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
