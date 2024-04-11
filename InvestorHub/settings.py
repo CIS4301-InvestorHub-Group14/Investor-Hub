@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'orcl',
-        'USER': 'schreckryan',
-        'PASSWORD': 'KRZ4L6Q3pfjssIDJIbzmxQDz',
+        'USER': 'bgrunes',
+        'PASSWORD': '1Bj761gxo16AtLeQFVFHY4Lt',
         'HOST': 'oracle.cise.ufl.edu',
         'PORT': '1521',
     }
