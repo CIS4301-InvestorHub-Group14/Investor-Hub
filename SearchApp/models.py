@@ -28,6 +28,19 @@ class Stock(models.Model):
         managed = False
         db_table = 'stock'
 
+    def __str__(self):
+        return "stock ID: "+ str(self.stock_id) + ". Ticker: "+ self.ticker+"."
+
+    def getStockID(self):
+        return self.stock_id
+
+    def getTicker(self):
+        return self.ticker
+
+    def getInformation(self):
+        return self.information
+
+
 
 class Dividends(models.Model):
     dividend_id = models.BigIntegerField(primary_key=True)

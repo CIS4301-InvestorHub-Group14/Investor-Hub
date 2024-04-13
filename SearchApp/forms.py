@@ -13,3 +13,4 @@ class SignUpForm(forms.ModelForm):
         labels = {
             'dob': 'Date of Birth'
         }
+

@@ -1,12 +1,22 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from .forms import SignUpForm
-from .models import SiteUser
+from .models import SiteUser, Stock
 
 
 # Create your views here.
 # You can find all the html files in the templates file
+
+def stock(request):
+    if request.method == "POST":
+        t = request.POST['ticker']
+        s = get_object_or_404(Stock, ticker=t)
+        list = [s.stock_id, s.ticker, s.information]
+        context = {"stock information": list}
+        return render(request, 'dashboard.html', context)
+
+    return render(request, 'dashboard.html')
 
 
 def login_view(request):
