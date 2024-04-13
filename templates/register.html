@@ -10,13 +10,14 @@
 <body>
     {% include "navbar.html" %}
 
-    <!-- Main content for the Login page -->
+    <!-- Main content for the Register page -->
     <div class="container">
         <h1>Sign Up</h1>
-        <form action="{% url 'login' %} method="post">
+        <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>
+            <button type="button" class="back-button" onclick="window.history.back();">Back</button>
         </form>
     </div>
 </body>

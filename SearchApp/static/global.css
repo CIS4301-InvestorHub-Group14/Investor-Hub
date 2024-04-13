@@ -3,8 +3,49 @@
 /* Body and background styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     padding: 20px;
+    margin: 0;
+    position: relative;
+    overflow-x: hidden; 
+    background-color: #f9fafb;
+    min-height: 100vh;
+}
+
+body::before, body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: 500px; 
+    height: 500px; 
+    filter: blur(160px);
+    z-index: -1;
+}
+
+body::before {
+    top: -150px; 
+    right: 100px; 
+    background-color: #fbe2e3; 
+    filter: blur(100px);
+}
+
+body::after {
+    bottom: -150px; 
+    left: 100px; 
+    background-color: #dbd7fb; 
+    filter: blur(100px);
+}
+
+/* Dark mode specifics, if needed */
+body.dark {
+    background-color: #1f2937;
+}
+
+body.dark::before {
+    background-color: #946263; 
+}
+
+body.dark::after {
+    background-color: #676394; 
 }
 
 /* Container for centralized styling */
@@ -15,7 +56,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 0 auto;
-    text-align: center; /* Centers text within the container */
+    text-align: center; 
 }
 
 .centered-text {
@@ -26,6 +67,37 @@ body {
 h2, h1 {
     color: #333;
     text-align: center;
+}
+
+/* Button-like styles for Login and Sign Up links */
+.loginButton,
+.signupButton {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px; 
+    background-color: #5cb85c; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 4px; 
+    transition: background-color 0.3s, transform 0.2s; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+}
+
+/* Hover effect for buttons */
+.loginButton:hover,
+.signupButton:hover {
+    background-color: #4cae4c; 
+    transform: scale(1.05); 
+}
+
+/* Additional specific styles for Sign Up button if needed */
+.signupButton {
+    background-color: #337ab7; 
+}
+
+.signupButton:hover {
+    background-color: #286090; 
 }
 
 
@@ -51,7 +123,7 @@ input[type="email"] {
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus {
-    border-color: #00ffea; /* Highlight focus with a modern color */
+    border-color: #00ffea;
 }
 
 /* Styles for submit and general action buttons */
@@ -89,8 +161,8 @@ button.back-button:hover {
     padding: 10px;
     background-color: #333;
     color: #fff;
-    border-radius: 8px; /* Rounded edges for modern look */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
 }
 
 /* Link styles within navbar */
@@ -98,7 +170,7 @@ button.back-button:hover {
     color: #fff;
     text-decoration: none;
     padding: 0 15px;
-    transition: color 0.3s; /* Smooth transition for hover effects */
+    transition: color 0.3s; 
 }
 
 /* Flex display for right-aligned navbar elements */
@@ -109,5 +181,69 @@ button.back-button:hover {
 /* Hover effect for links within navbar */
 .navbar a:hover {
     text-decoration: none;
-    color: #bbb; /* Lighten color on hover for a subtle effect */
+    color: #bbb; 
+}
+
+/*style for regex messages*/
+.messages p {
+    color: red; 
+    border: 1px solid #ffa1a1; 
+    background-color: #ffecec; 
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.search-bar {
+    text-align: center;
+    margin: 20px;
+}
+
+.search-bar input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+/* Metrics Section Styling */
+.metrics-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.metric {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.time-range-selector {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Time Range Selector Styling */
+select {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }

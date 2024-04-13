@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import SignUpForm
 from .models import SiteUser, Stock
 
@@ -8,30 +10,20 @@ from .models import SiteUser, Stock
 # Create your views here.
 # You can find all the html files in the templates file
 
-def stock(request):
-    if request.method == "POST":
-        t = request.POST['ticker']
-        s = get_object_or_404(Stock, ticker=t)
-        list = [s.stock_id, s.ticker, s.information]
-        context = {"stock information": list}
-        return render(request, 'dashboard.html', context)
-
-    return render(request, 'dashboard.html')
-
-
 def login_view(request):
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # redirect to user's home page
+            return redirect('dashboard')  # Redirect to the dashboard if login is successful
         else:
-            # Invalid login
-            pass
-
-    return render(request, 'login.html')
+            # If authentication fails, stay on the login page and show an error message
+            messages.error(request, 'Invalid username or password.')
+            return render(request, 'login.html', {'username': username})
+    else:
+        return render(request, 'login.html')
 
 
 def register_view(request):
@@ -57,6 +49,7 @@ def register_view(request):
                 email=form.cleaned_data['email']
             )
             # redirect to login page in html
+            return redirect('login')
     else:
         # The request is GET, so display blank form
         form = SignUpForm()
@@ -75,3 +68,12 @@ def home_view(request):
 
 def settings_view(request):
     return render(request, 'settings.html')
+
+def dashboard_view(request):
+    return render(request, 'dashboard.html')
+
+def savedcomparisons_view(request):
+    return render(request, 'savedcomparisons.html')
+
+def metrics_view(request):
+    return render(request, 'metrics.html')
