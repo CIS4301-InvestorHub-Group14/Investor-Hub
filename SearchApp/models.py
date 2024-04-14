@@ -25,7 +25,7 @@ class Stock(models.Model):
     saveid = models.ForeignKey('Saveddata', models.DO_NOTHING, db_column='saveid', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'stock'
 
 
@@ -36,7 +36,7 @@ class Dividends(models.Model):
     stock = models.ForeignKey('Stock', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'dividends'
 
 
@@ -49,7 +49,7 @@ class Institutionalholders(models.Model):
     stock = models.ForeignKey('Stock', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'institutionalholders'
 
 
@@ -62,7 +62,7 @@ class Majorholders(models.Model):
     stock = models.ForeignKey('Stock', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'majorholders'
 
 
@@ -74,6 +74,7 @@ class Saveddata(models.Model):
     username = models.ForeignKey('SiteUser', models.DO_NOTHING, db_column='username', blank=True, null=True)
 
     class Meta:
+        managed = True
         db_table = 'saveddata'
 
 
@@ -86,4 +87,5 @@ class SiteUser(models.Model):
     firstname = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
+        managed = True
         db_table = 'site_user'
