@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- TODO: add stock pages -->
 <!-- TODO: add functionality to add a stock to a comparison -->
 <!-- TODO: add functionality to save stock comparisons after displaying them -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestorHub</title>
+    <link rel="stylesheet" href="{% static 'global.css' %}">
 </head>
 <body>
+    {% include "navbar.html" %}
 
+            <h1 class="welcomeTitle">Display page for a stock Display Page</h1>
+            <p class="welcomeSubtitle">Welcome to InvestorHub</p>
+    <ul>
+    {% for stock in display %}
+        <li><strong><a href="{% url 'show_stock' stock.stock_id %}">Stock ID: {{ stock }} Ticker: {{ stock.ticker }}
+</a></strong></li>
+    {% endfor %}
+        </ul>
+
+    </main>
 </body>
 </html>

@@ -16,11 +16,9 @@
             <h1 class="welcomeTitle">InvestorHub lets you track the stock market</h1>
             <p class="welcomeSubtitle">Search Results:</p>
             {% if searchbar %}
-                <h1>You searched for: {{ searchbar }}</h1>
             <br/>
-            <!-- TODO: add links to stock pages -->
                 {% for stock in stocks %}
-                    {{ stock }} Record High: {{ stock.recordhigh }} Record Low: {{ stock.recordlow }}<br/>
+                    <a href="{% url 'show_stock' stock.stock_id %}">{{ stock }} Record High: {{ stock.recordhigh }} Record Low: {{ stock.recordlow }}</a><br/>
                 {% endfor %}
             {% else %}
                 <div class="search-bar">
@@ -30,7 +28,7 @@
                 {% csrf_token %}
 
                 <input type="text" placeholder="Search stocks..." aria-label="Search stocks" name="searchbar">
-                <button type="submit">Search</button> <!-- Button does nothing on click -->
+                <button type="submit">Search</button>
             </form>
         </div>
             {% endif %}

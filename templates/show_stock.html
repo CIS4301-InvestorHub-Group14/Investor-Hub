@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- TODO: add functionabrty to save comparisons -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock:</title>
+    <link rel="stylesheet" href="{% static 'global.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <!-- Main content for the dashboard page -->
+    <main class="main-savedcomparisons">
+        <div class="centered-text">
+
+            <h1 class="stockTitle">Stock {{ stock }}: Ticker: {{ stock.ticker }}</h1>
+            <p class="Subtitle">Here is the stock's info</p>
+
+            Time: {{ stock.recordtime }}</br>
+            Open: {{ stock.recordopen }}</br>
+            Close: {{ stock.recordclose }}</br>
+            High: {{ stock.recordhigh }}</br>
+            Low: {{ stock.recordlow }}</br>
+            Volume: {{ stock.recordvolume }}</br>
+            Date: {{ stock.recorddate }}</br>
+            Timeframe: {{ stock.timeframe }}</br>
+            Information: {{ stock.information }}</br>
+            SaveID: {{ stock.saveid }}</br>
+        </div>
+
+    </main>
+</body>
+</html>

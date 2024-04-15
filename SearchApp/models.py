@@ -29,7 +29,7 @@ class Stock(models.Model):
         db_table = 'stock'
 
     def __str__(self):
-        return "stock ID: " + str(self.stock_id) + ", Ticker: " + self.ticker
+        return str(self.stock_id)
 
 
 class Dividends(models.Model):

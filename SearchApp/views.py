@@ -81,8 +81,16 @@ def metrics_view(request):
 def search_stocks(request):
     if request.method == "POST":
         searchbar = request.POST['searchbar']
-        stocks = Stock.objects.filter(ticker__contains=searchbar)
+        stocks = Stock.objects.filter(ticker__contains=searchbar.upper())
 
         return render(request, 'search_stocks.html', {'searchbar':searchbar, 'stocks':stocks})
     else:
         return render(request, 'search_stocks.html', {})
+
+def display(request):
+    display = Stock.objects.all()
+    return render(request, 'display_stocks.html', {'display': display})
+
+def show_stock(request, stock_id):
+    stock = Stock.objects.get(pk=stock_id)
+    return render(request, 'show_stock.html', {'stock': stock})
