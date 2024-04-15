@@ -15,9 +15,7 @@
         <div class="centered-text">
             <h1 class="welcomeTitle">InvestorHub lets you track the stock market</h1>
             <p class="welcomeSubtitle">Welcome to InvestorHub</p>
-            {% if not user.is_authenticated %}
             <a href="/login" class="loginButton">Login</a>
-            {% endif %}
             <a href="/register" class="signupButton">Sign Up</a>
         </div>
     </main>
