@@ -14,11 +14,15 @@
     <main class="main-dashboard">
         <div class="centered-text">
             <h1 class="welcomeTitle">InvestorHub lets you track the stock market</h1>
-            <p class="welcomeSubtitle">Enter your query into the search bar below!</p>
-        </div>
-
-        <!-- Non-functional Search bar for stock queries -->
-        <div class="search-bar">
+            <p class="welcomeSubtitle">Search Results:</p>
+            {% if searchbar %}
+                <h1>You searched for: {{ searchbar }}</h1>
+            <br/>
+                {% for stock in stocks %}
+                    {{ stock }} Record High: {{ stock.recordhigh }} Record Low: {{ stock.recordlow }}<br/>
+                {% endfor %}
+            {% else %}
+                <div class="search-bar">
             <form class="d-flex" method="POST"
             action="{% url 'search_stocks' %}">
 
@@ -27,6 +31,8 @@
                 <input type="text" placeholder="Search stocks..." aria-label="Search stocks" name="searchbar">
                 <button type="submit">Search</button> <!-- Button does nothing on click -->
             </form>
+        </div>
+            {% endif %}
         </div>
     </main>
 </body>

@@ -1,14 +1,10 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.views import generic
 from django.contrib import messages
-from . import forms, models
-
-
-#from .forms import SignUpForm
-#from .models import SiteUser, Stock
+from .forms import SignUpForm
+from .models import SiteUser, Stock
 
 
 # Create your views here.
@@ -34,7 +30,7 @@ def register_view(request):
     # if this is a POST request, process form data
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
-        form = forms.SignUpForm(request.POST)
+        form = SignUpForm(request.POST)
         # check validity
         if form.is_valid():
             # process the data
@@ -44,7 +40,7 @@ def register_view(request):
                 email=form.cleaned_data['email']
             )
 
-            site_user = models.SiteUser.objects.create(
+            site_user = SiteUser.objects.create(
                 dob=form.cleaned_data['dob'],
                 lastname=form.cleaned_data['lastname'],
                 firstname=form.cleaned_data['firstname'],
@@ -56,7 +52,7 @@ def register_view(request):
             return redirect('login')
     else:
         # The request is GET, so display blank form
-        form = forms.SignUpForm()
+        form = SignUpForm()
 
     return render(request, 'register.html', {"form": form})
 
@@ -73,20 +69,20 @@ def home_view(request):
 def settings_view(request):
     return render(request, 'settings.html')
 
-
 def dashboard_view(request):
-    if request.method=="POST":
-        searchticker=request.POST.get('ticker')
-        searchstockid=request.POST.get('stock_id')
-        stocksearch=models.Stock.objects.filter(stock_id = searchstockid, ticker=searchticker)
-        return render(request,'dashboard.html', {"data": stocksearch})
-    else:
-        return render(request, 'dashboard.html',{"data": models.Stock.objects.all()})
-
+    return render(request, 'dashboard.html')
 
 def savedcomparisons_view(request):
     return render(request, 'savedcomparisons.html')
 
-
 def metrics_view(request):
     return render(request, 'metrics.html')
+
+def search_stocks(request):
+    if request.method == "POST":
+        searchbar = request.POST['searchbar']
+        stocks = Stock.objects.filter(ticker__contains=searchbar)
+
+        return render(request, 'search_stocks.html', {'searchbar':searchbar, 'stocks':stocks})
+    else:
+        return render(request, 'search_stocks.html', {})
