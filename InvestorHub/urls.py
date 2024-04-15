@@ -30,5 +30,7 @@ urlpatterns = [
     path('metrics/', views.metrics_view, name='metrics'),
     path('display_stocks/', views.display, name="disp_stocks"),
     path('search_stocks', views.search_stocks, name='search_stocks'),
-    path('show_stock/<stock_id>', views.show_stock, name='show_stock')
+    path('show_stock/<stock_id>', views.show_stock, name='show_stock'),
+    # path('compare_stocks/<stock_id>', views.compare_stocks, name='compare_stocks'), unsure how to implement comparisons
+
 ]

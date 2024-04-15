@@ -11,11 +11,10 @@
 <body>
     {% include "navbar.html" %}
 
-    <!-- Main content for the dashboard page -->
-    <main class="main-savedcomparisons">
+    <main class="main-showstock">
         <div class="centered-text">
 
-            <h1 class="stockTitle">Stock {{ stock }}: Ticker: {{ stock.ticker }}</h1>
+            <h1 class="stockTitle">Stock {{ stock }}: Ticker: {{ stock.ticker }} Date: {{ stock.recorddate }}</h1>
             <p class="Subtitle">Here is the stock's info</p>
 
             Time: {{ stock.recordtime }}</br>
@@ -24,12 +23,14 @@
             High: {{ stock.recordhigh }}</br>
             Low: {{ stock.recordlow }}</br>
             Volume: {{ stock.recordvolume }}</br>
-            Date: {{ stock.recorddate }}</br>
             Timeframe: {{ stock.timeframe }}</br>
             Information: {{ stock.information }}</br>
             SaveID: {{ stock.saveid }}</br>
+            {% if user.is_authenticated %}
+            </br>
+                <button>Add Stock to Comparison</button> <!-- button does nothing -->
+            {% endif %}
         </div>
-
     </main>
 </body>
 </html>

@@ -94,3 +94,15 @@ def display(request):
 def show_stock(request, stock_id):
     stock = Stock.objects.get(pk=stock_id)
     return render(request, 'show_stock.html', {'stock': stock})
+
+# def compare_stocks(request):
+#    if request.method == "POST":
+#        stock1 = request.POST['stock1']
+#        try:
+#            stock2 = request.POST['stock2']
+#        except:
+#            stock2 = None
+
+#    comparison = {stock1, stock2}
+
+#    return render(request, 'compare_stocks.html', {'comparison': comparison})

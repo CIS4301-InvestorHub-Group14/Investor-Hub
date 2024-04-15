@@ -1,0 +1,51 @@
+<!-- shell for comparing two stocks. Currently not functional.
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings</title>
+    <link rel="stylesheet" href="{% static 'global.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    <div>
+        <h1 class="stockTitle">Stock {{ comparison[0] }}: Ticker: {{ comparison[0].ticker }}</h1>
+            <p class="Subtitle">Here is the first stock's info</p>
+
+            Time: {{ comparison[0].recordtime }}</br>
+            Open: {{ comparison[0].recordopen }}</br>
+            Close: {{ comparison[0].recordclose }}</br>
+            High: {{ comparison[0].recordhigh }}</br>
+            Low: {{ comparison[0].recordlow }}</br>
+            Volume: {{ comparison[0].recordvolume }}</br>
+            Date: {{ comparison[0].recorddate }}</br>
+            Timeframe: {{ comparison[0].timeframe }}</br>
+            Information: {{ comparison[0].information }}</br>
+            SaveID: {{ comparison[0].saveid }}</br>
+    </div>
+    <div>
+        {% if comparison[1] is not None %}
+        <h1 class="stockTitle">Stock {{ comparison[1] }}: Ticker: {{ comparison[1].ticker }}</h1>
+            <p class="Subtitle">Here is the second stock's info</p>
+
+            Time: {{ comparison[1].recordtime }}</br>
+            Open: {{ comparison[1].recordopen }}</br>
+            Close: {{ comparison[1].recordclose }}</br>
+            High: {{ comparison[1].recordhigh }}</br>
+            Low: {{ comparison[1].recordlow }}</br>
+            Volume: {{ comparison[1].recordvolume }}</br>
+            Date: {{ comparison[1].recorddate }}</br>
+            Timeframe: {{ comparison[1].timeframe }}</br>
+            Information: {{ comparison[1].information }}</br>
+            SaveID: {{ comparison[1].saveid }}</br>
+        {% else %}
+            <h1>Add a Second Stock</h1>
+        {% endif %}
+
+    </div>
+
+</body>
+</html> -->

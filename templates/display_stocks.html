@@ -16,7 +16,7 @@
             <p class="welcomeSubtitle">Welcome to InvestorHub</p>
     <ul>
     {% for stock in display %}
-        <li><strong><a href="{% url 'show_stock' stock.stock_id %}">Stock ID: {{ stock }} Ticker: {{ stock.ticker }}
+        <li><strong><a href="{% url 'show_stock' stock.stock_id %}">Stock ID: {{ stock }} Ticker: {{ stock.ticker }} Date: {{ stock.recorddate }}
 </a></strong></li>
     {% endfor %}
         </ul>

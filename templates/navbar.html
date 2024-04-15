@@ -10,7 +10,6 @@
         <a href="/settings">Settings</a>
         <a href="/dashboard">Dashboard</a>
     </div>
-    <!-- Non-functional Search bar for stock queries -->
         <div class="search-bar">
             <form class="d-flex" method="POST"
             action="{% url 'search_stocks' %}">
@@ -18,7 +17,7 @@
                 {% csrf_token %}
 
                 <input type="text" placeholder="Search stocks..." aria-label="Search stocks" name="searchbar">
-                <button type="submit">Search</button> <!-- Button does nothing on click -->
+                <button type="submit">Search</button>
             </form>
         </div>
 </nav>

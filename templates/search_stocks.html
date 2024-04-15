@@ -18,7 +18,7 @@
             {% if searchbar %}
             <br/>
                 {% for stock in stocks %}
-                    <a href="{% url 'show_stock' stock.stock_id %}">{{ stock }} Record High: {{ stock.recordhigh }} Record Low: {{ stock.recordlow }}</a><br/>
+                    <a href="{% url 'show_stock' stock.stock_id %}">{{ stock }}: {{ stock.ticker }} Record High: {{ stock.recordhigh }} Record Low: {{ stock.recordlow }}</a><br/>
                 {% endfor %}
             {% else %}
                 <div class="search-bar">
