@@ -13,6 +13,7 @@ import datetime
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from datetime import date
 import matplotlib
+from decimal import Decimal  # Ensure this import is present
 
 matplotlib.use('agg')
 from django.http import HttpResponse
@@ -97,10 +98,6 @@ def dashboard_view(request):
     return render(request, 'dashboard.html', context)
 
 
-def savedcomparisons_view(request):
-    return render(request, 'savedcomparisons.html')
-
-
 def metrics_view(request):
     return render(request, 'metrics.html')
 
@@ -108,6 +105,7 @@ def metrics_view(request):
 def company_view(request, company):
     if request.method == "POST":
         datametric = request.POST.get('data-metrics')
+
         d1 = request.POST.get('d1')
         m1 = request.POST.get('m1')
         y1 = request.POST.get('y1')
@@ -127,11 +125,29 @@ def company_view(request, company):
         t1 = y1 + '-' + m1 + '-' + d1
         t2 = y2 + '-' + m2 + '-' + d2
 
-        #just testing
-        getRSI(company, t1, t2)
+        result = 0
+        formatted_results = 0
+        if datametric == "RSI":
+            result = getRSI(company, t1, t2)
+            formatted_results = [(date_str, round(float(rsi), 2)) for date_str, rsi in result]
+        elif datametric == "MACD":
+            result = getMACD(company, t1, t2)
+            formatted_results = []
+            for date, count, decimal_value in result:
+                formatted_date = date.strftime('%Y-%m-%d')  # Format date as 'YYYY-MM-DD'
+                formatted_decimal = f"{decimal_value:.2f}"  # Round the decimal to two places
+                formatted_results.append((formatted_date, count, formatted_decimal))
+        elif datametric == "Volatility":
+            result = getVolatility(company, t1, t2)
+            formatted_results = [(date, float(value) if isinstance(value, Decimal) else float(value)) for date, value in
+                              result]
+        elif datametric == "MMA":
+            result = getMMA(company, t1, t2)
+            formatted_results = [(date, float(value)) for date, value in result]
 
         if datametric:
-            return redirect('datametric', company=company, datametric=datametric)
+            return render(request, 'company.html', {'companyName': company, 'result': formatted_results, 'datametric': datametric})
+            # return redirect('datametric', company=company, datametric=datametric, result=result)
         else:
             # context = {'errorMessage': 'Invalid Company Name'}
             pass
@@ -151,6 +167,7 @@ def getMMA(ticker, t1, t2):
 
         cursor.execute(query, (ticker, t1, t2))
         rows = cursor.fetchall()
+        return rows
 
 
 def getMACD(ticker, t1, t2):
@@ -182,6 +199,7 @@ def getMACD(ticker, t1, t2):
 
         cursor.execute(query, (ticker, t1, t2, ticker, t1, t2))
         row = cursor.fetchall()
+        return row
 
 
 def getVolatility(ticker, t1, t2):
@@ -209,6 +227,7 @@ def getVolatility(ticker, t1, t2):
         cursor.execute(query, (ticker, t1, t2))
         cursor.execute(query, (ticker, t1, t2))
         row = cursor.fetchall()
+        return row
 
 
 def getRSI(ticker, t1, t2):
@@ -239,11 +258,12 @@ def getRSI(ticker, t1, t2):
         cursor.execute(query, (ticker, t1, t2))
         rows = cursor.fetchall()
         nrows = []
-        for r in rows:
-            mth = (int)(rows[0][0].split('-')[0])
-            yr = (int)(rows[0][0].split('-')[1])
-            day = 1
-            new_date = date(yr, mth, day)
+        return rows
+        # for r in rows:
+        #     mth = (int)(rows[0][0].split('-')[0])
+        #     yr = (int)(rows[0][0].split('-')[1])
+        #     day = 1
+        #     new_date = date(yr, mth, day)
 
 
 def datametric_view(request, company, datametric):

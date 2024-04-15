@@ -12,7 +12,7 @@
 
 <header>
     <h1>{{ companyName }}</h1>
-    <p>Posted by John Doe</p>
+    <p></p>
 </header>
 
 <div>
@@ -50,6 +50,10 @@
         <input type="submit" value="Calculate Metric">
     </form>
 
+    {% if result %}
+        <p>{{ datametric }}</p>
+        <p>{{ result }}</p>
+    {% endif %}
 
 </div>
 
