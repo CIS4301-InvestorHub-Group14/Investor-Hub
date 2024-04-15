@@ -20,8 +20,23 @@
         <!-- Non-functional Search bar for stock queries -->
         <div class="search-bar">
             <form>
+                <input type="submit" vaule="Search">
+                <table border="1">
+                    <tr>
+                        <th>ticker</th>
+                        <th>stock_id</th>
+                    </tr>
+                    {% for result in data %}
+                    <tr>
+                        <td>{{result.ticker}}</td>
+                        <td>{{result.stock_id}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <!--
                 <input type="text" placeholder="Search stocks..." aria-label="Search stocks">
-                <button type="button">Search</button> <!-- Button does nothing on click -->
+                <button type="button">Search</button> <-- Button does nothing on click -->
+                -->
             </form>
         </div>
     </main>

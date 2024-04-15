@@ -1,5 +1,7 @@
 from django import forms
-from .models import SiteUser
+from django_select2 import forms as s2forms
+
+from .models import SiteUser, Stock
 
 
 class SignUpForm(forms.ModelForm):
@@ -13,4 +15,3 @@ class SignUpForm(forms.ModelForm):
         labels = {
             'dob': 'Date of Birth'
         }
-

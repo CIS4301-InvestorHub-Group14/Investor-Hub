@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 # These models are all the table schemas we created in SQLDeveloper
 
 
@@ -29,17 +30,7 @@ class Stock(models.Model):
         db_table = 'stock'
 
     def __str__(self):
-        return "stock ID: "+ str(self.stock_id) + ". Ticker: "+ self.ticker+"."
-
-    def getStockID(self):
-        return self.stock_id
-
-    def getTicker(self):
-        return self.ticker
-
-    def getInformation(self):
-        return self.information
-
+        return "stock ID: " + str(self.stock_id) + ", Ticker: " + self.ticker
 
 
 class Dividends(models.Model):
