@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company View</title>
+    <link rel="stylesheet" href="{% static 'global.css' %}">
+</head>
+<body>
+{% include "navbar.html" %}
+
+<header>
+    <h1>{{ companyName }}</h1>
+    <p>Posted by John Doe</p>
+</header>
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="data-metrics">Data Metric</label>
+        <select name="data-metrics" id="data-metrics">
+            <option value="MACD">MACD</option>
+            <option value="Volatility">Volatility</option>
+            <option value="RSI">RSI</option>
+            <option value="MMA">MMA</option>
+            <option value="PVI/NVI">PVI/NVI</option>
+        </select>
+
+
+        <label for="m1">Month</label>
+        <input id="m1" type="text" name="m1">
+
+        <label for="d1">Day</label>
+        <input id="d1" type="text" name="d1">
+
+        <label for="y1">Year</label>
+        <input id="y1" type="text" name="y1">
+
+        <label for="m2">Month</label>
+        <input id="m2" type="text" name="m2">
+
+        <label for="d2">Day</label>
+        <input id="d2" type="text" name="d2">
+
+        <label for="y2">Year</label>
+        <input id="y2" type="text" name="y2">
+
+
+        <input type="submit" value="Calculate Metric">
+    </form>
+
+
+</div>
+
+
+</body>
+</html>
+
+
+
+
