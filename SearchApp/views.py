@@ -31,6 +31,7 @@ def register_view(request):
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
         form = SignUpForm(request.POST)
+
         # check validity
         if form.is_valid():
             # process the data
@@ -40,7 +41,7 @@ def register_view(request):
                 email=form.cleaned_data['email']
             )
 
-            site_user = SiteUser.objects.create(
+            SiteUser.objects.create(
                 dob=form.cleaned_data['dob'],
                 lastname=form.cleaned_data['lastname'],
                 firstname=form.cleaned_data['firstname'],
