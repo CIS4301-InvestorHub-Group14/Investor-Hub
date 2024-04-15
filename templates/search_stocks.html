@@ -18,6 +18,7 @@
             {% if searchbar %}
                 <h1>You searched for: {{ searchbar }}</h1>
             <br/>
+            <!-- TODO: add links to stock pages -->
                 {% for stock in stocks %}
                     {{ stock }} Record High: {{ stock.recordhigh }} Record Low: {{ stock.recordlow }}<br/>
                 {% endfor %}
